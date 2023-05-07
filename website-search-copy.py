@@ -25,19 +25,22 @@ wait = WebDriverWait(driver, 30)
 #wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "placardBanner")))
 
 # Print out the names of the apartments
-listings = driver.find_elements(By.CLASS_NAME, "property-link")
+listings = driver.find_elements(By.CLASS_NAME, "property-info")
 for ele in listings:
     #print(name.text)
-    name = ele.get_attribute("aria-label")
-    link = ele.get_attribute("href")
-    print(name, ":", link)
+    #name = ele.get_attribute("aria-label")
+    #link = ele.get_attribute("href")
+    #print(name, ":", link)
+    listing = listings.find_element(By.CLASS_NAME, "property-link")
+    name = listing.get_attribute("aria-label")
+    link = listing.get_attribute("href")
 
 
 apartment_prices = driver.find_elements(By.CLASS_NAME, "property-pricing")
 for ele in apartment_prices:
     print(ele.text)
 
-print("dont")
+print("done")
 
 # Close the browser
 input()
