@@ -32,6 +32,8 @@ time.sleep(10)
 # Print out the names of the apartments
 listings = driver.find_elements(By.CLASS_NAME, "property-info")
 
+results = []
+
 for ele in listings:
     try:
         listing = ele.find_element(By.CLASS_NAME, "property-link")
@@ -44,7 +46,7 @@ for ele in listings:
                 price = ele.find_element(By.CLASS_NAME, "property-rents").text
             except:
                 price = ele.find_element(By.CLASS_NAME, "price-range").text
-        print(name, "|", link, "|", price)
+        #print(name, "|", link, "|", price)
     except StaleElementReferenceException:
         # Retry the element lookup in case of StaleElementReferenceException
         listing = ele.find_element(By.CLASS_NAME, "property-link")
@@ -57,9 +59,9 @@ for ele in listings:
                 price = ele.find_element(By.CLASS_NAME, "property-rents").text
             except:
                 price = ele.find_element(By.CLASS_NAME, "price-range").text
-        print(name, "|", link, "|", price)
+        #print(name, "|", link, "|", price)
+    results.append((name, link, price))
     
-
 
 print("done")
 
