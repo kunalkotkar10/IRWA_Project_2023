@@ -4,12 +4,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 
 from CLPageSearch import pagesearch
 
-def CLSearch():
+def CLSearch(text):
     # Set up the WebDriver
-    driver = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    driver = webdriver.Chrome(options = chrome_options)
 
     # Navigate to the apartments.com website
     driver.get("https://baltimore.craigslist.org/search/apa")
@@ -17,7 +20,8 @@ def CLSearch():
     # Find the search bar and enter the location you want to search for
     search_box = driver.find_element(By.CLASS_NAME, "cl-query-bar")
     search_bar = search_box.find_element(By.TAG_NAME, 'input')
-    search_bar.send_keys("charles village")
+    # search_bar.send_keys("charles village")
+    search_bar.send_keys(text)
     search_bar.send_keys(Keys.RETURN)
 
 
@@ -36,7 +40,7 @@ def CLSearch():
 
     results = []
 
-    for ele in listings:
+    for i,ele in enumerate(listings):
         try:
             listing = ele.find_element(By.CLASS_NAME, "titlestring")
             #name = listing.text
@@ -54,12 +58,14 @@ def CLSearch():
             name = beds + 'BR/' + bath + 'Ba unit'
         print(name, '|', address, '|', link, '|', price)
         results.append((name, address, link, price))
+        if i>1:
+            break
         
     print("done - craigslist.org")
     #print(str(results[i])+"\n" for i in range(len(results)))
 
     # Close the browser
-    input()
+    # input()
     driver.quit()
     
     return results

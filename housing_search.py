@@ -7,9 +7,12 @@ from selenium.webdriver.common.keys import Keys
 from CLSearch import CLSearch
 from aptsSearch import aptsSearch
 
-craigslist = CLSearch()
-apts = aptsSearch()
-combined = craigslist + apts
+def get_data(text):
+    craigslist = CLSearch(text)
+    apts = aptsSearch(text)
+    combined = craigslist + apts
 
-print(craigslist)
-print(apts)
+    print(craigslist)
+    print(apts)
+
+    return combined
