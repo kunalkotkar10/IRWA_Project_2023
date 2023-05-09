@@ -11,12 +11,22 @@ def pagesearch(url):
     driver.get(url)
     try:
         address = driver.find_element(By.CLASS_NAME, "mapaddress").text
+        if address == 'google maps':
+            address = "navigate to page for address"
+    except NoSuchElementException:
+        address = "navigate to page for address"
+
+    try:
+        rms = driver.find_element(By.CLASS_NAME, "shared-line-bubble")
+        rms = rms.find_elements(By.TAG_NAME, 'b')
+        beds = rms[0]
+        if address == 'google maps':
+            address = "navigate to page for address"
     except NoSuchElementException:
         address = "navigate to page for address"
 
     driver.quit()
 
-    if address == 'google maps':
-        address = "navigate to page for address"
+    
 
     return address
