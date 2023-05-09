@@ -39,17 +39,19 @@ def CLSearch():
     for ele in listings:
         try:
             listing = ele.find_element(By.CLASS_NAME, "titlestring")
-            name = listing.text
+            #name = listing.text
             link = listing.get_attribute("href")
-            address = pagesearch(link)
-            price = ele.find_element(By.CLASS_NAME, "priceinfo").text
+            beds, bath, address, price = pagesearch(link)
+            #price = ele.find_element(By.CLASS_NAME, "priceinfo").text
+            name = beds + 'BR/' + bath + 'Ba unit'
         except StaleElementReferenceException:
             # Retry the element lookup in case of StaleElementReferenceException
             listing = ele.find_element(By.CLASS_NAME, "titlestring")
-            name = listing.text
+            #name = listing.text
             link = listing.get_attribute("href")
-            address = pagesearch(link)
-            price = ele.find_element(By.CLASS_NAME, "priceinfo").text
+            beds, bath, address, price = pagesearch(link)
+            #price = ele.find_element(By.CLASS_NAME, "priceinfo").text
+            name = beds + 'BR/' + bath + 'Ba unit'
         print(name, '|', address, '|', link, '|', price)
         results.append((name, address, link, price))
         
