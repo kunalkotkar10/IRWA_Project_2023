@@ -9,11 +9,14 @@ def pagesearch(url):
     driver = webdriver.Chrome()
 
     driver.get(url)
-    address = driver.find_element(By.CLASS_NAME, "mapaddress").text
+    try:
+        address = driver.find_element(By.CLASS_NAME, "mapaddress").text
+    except NoSuchElementException:
+        address = "navigate to page for address"
 
     driver.quit()
 
     if address == 'google maps':
-        address = "ask for address"
+        address = "navigate to page for address"
 
     return address
