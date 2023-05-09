@@ -11,7 +11,7 @@ import re
 def pagesearch(url):
     chrome_options = Options()
     chrome_options.add_argument('--headless')
-    driver = webdriver.Chrome(options = chrome_options)
+    driver = webdriver.Chrome(options = chrom)
 
     driver.get(url)
 

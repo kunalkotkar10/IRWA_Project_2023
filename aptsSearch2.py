@@ -10,9 +10,10 @@ from aptsPageSearch import pagesearch
 
 def aptsSearch(text):
     # Set up the WebDriver
-    chrome_options = Options()
-    chrome_options.add_argument('--headless')
-    driver = webdriver.Chrome(options = chrome_options)
+    # chrome_options = Options()
+    # chrome_options.add_argument('--headless')
+    # driver = webdriver.Chrome(options = chrome_options)
+    driver = webdriver.Chrome()
 
     # Navigate to the apartments.com website
     driver.get("https://www.apartments.com/search/")
