@@ -43,7 +43,7 @@ def CLSearch():
             link = listing.get_attribute("href")
             beds, bath, address, price = pagesearch(link)
             #price = ele.find_element(By.CLASS_NAME, "priceinfo").text
-            name = beds + 'BR/' + bath + 'Ba unit'
+            name = beds + 'BR/' + bath + 'Ba unit at ' + address
         except StaleElementReferenceException:
             # Retry the element lookup in case of StaleElementReferenceException
             listing = ele.find_element(By.CLASS_NAME, "titlestring")
@@ -51,9 +51,9 @@ def CLSearch():
             link = listing.get_attribute("href")
             beds, bath, address, price = pagesearch(link)
             #price = ele.find_element(By.CLASS_NAME, "priceinfo").text
-            name = beds + 'BR/' + bath + 'Ba unit'
-        print(name, '|', address, '|', link, '|', price)
-        results.append((name, address, link, price))
+            name = beds + 'BR/' + bath + 'Ba unit at ' + address
+        print(name, '|', link, '|', price)
+        results.append((name, link, price))
         
     print("done - craigslist.org")
     #print(str(results[i])+"\n" for i in range(len(results)))
