@@ -9,6 +9,7 @@ from aptsSearch import aptsSearch
 
 craigslist = CLSearch()
 apts = aptsSearch()
+combined = craigslist + apts
 
 print(craigslist)
 print(apts)
