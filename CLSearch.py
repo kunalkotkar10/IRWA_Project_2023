@@ -58,8 +58,8 @@ def CLSearch(text):
             name = beds + 'BR/' + bath + 'Ba unit at ' + address
         print(name, '|', link, '|', price)
         results.append((name, link, price, beds, bath))
-        if i>0:
-            break
+        # if i>5:
+        #     break
         
     print("done - craigslist.org")
     #print(str(results[i])+"\n" for i in range(len(results)))

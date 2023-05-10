@@ -22,13 +22,7 @@ def sort():
     print(sort_type)
     apts = get_sortedData(sort_type)
     print(f'In Python: {apts}')
-    # response = make_response(render_template('index.html', apts=get_sortedData(sort_type)))
-    # response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-    # return response
-    return render_template('index.html', apts = get_sortedData(sort_type))
-    # return render_template('index.html', apts=apts)
-    # return render_template('index.html', apts=apts)
-    # return '<html><body><h1>Hello, World!</h1></body></html>'
+    return render_template('index.html', apts = apts)
 
 if __name__ == '__main__':
     app.run(debug=True)

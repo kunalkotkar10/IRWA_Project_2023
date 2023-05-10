@@ -62,8 +62,8 @@ def aptsSearch(text):
         #results.append((name, link, price, beds, bath))
         
         results = results + pagesearch(link)
-        if i>0:
-            break
+        # if i>0:
+        #     break
         
     print(results)
     print("done - apartments.com")
