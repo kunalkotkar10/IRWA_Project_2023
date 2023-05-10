@@ -9,15 +9,43 @@ from CLSearch import CLSearch
 from aptsSearch import aptsSearch
 
 def get_data(text):
-    craigslist = CLSearch(text)
-    apts = aptsSearch(text)
-    combined = craigslist + apts
+    # craigslist = CLSearch(text)
+    # apts = aptsSearch(text)
+    # combined = craigslist + apts
 
-    print(craigslist)
-    print(apts)
+    # # print(craigslist)
+    # # print(apts)
 
-    df = pd.DataFrame(combined, columns=['name', 'link', 'price', 'beds', 'bath'])
-
+    # df = pd.DataFrame(combined, columns=['name', 'link', 'price', 'beds', 'bath'])
+    # print(df)
+    df = pd.DataFrame({'name': ['mike','danny'], 'link': ['link1','link2'], 'price': [34,48], 'beds': [2,4], 'bath': [2,3]})
+    df.to_csv('dataframe/apartments.csv', index=False)
+    print('csv saved')
+    print('Dataframe: ')
+    print(df)
+    # print(f'Type: {df.type}')
     return df
 
-print(get_data('charles village').sort_values('price', ascending=False))
+def get_sortedData(sort_type):
+    df = pd.read_csv('dataframe/apartments.csv')
+    # print('Sorted DF: ')
+    # print(df)
+    # print(f'Type: {df.type}')
+    if sort_type == '1':
+        df = df.sort_values('price', ascending=True)
+        print('Sorted price ascending: ',df)
+        return df
+    elif sort_type == '2':
+        df = df.sort_values('price', ascending=False)
+        print('Sorted price descending: ',df)
+        return df
+    elif sort_type == '3':
+        return df.sort_values('beds', ascending=True)
+    elif sort_type == '4':
+        return df.sort_values('beds', ascending=False)
+    elif sort_type == '5':
+        return df.sort_values('bath', ascending=True)
+    else:
+        return df.sort_values('bath', ascending=False)
+
+# print(get_data('charles village').sort_values('price', ascending=False))

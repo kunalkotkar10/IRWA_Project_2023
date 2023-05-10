@@ -1,8 +1,8 @@
 #form {
     margin: auto;
     padding-top: 20px;
-    width: 80%;
-    border: 3px solid #343A40;
+    width: 60%;
+    border: none;
     padding: 10px;
   }
 
@@ -17,10 +17,25 @@ color: solid #1178A6;
     margin: auto;
     padding-top: 20px;
     width: 80%;
-    border: 3px solid #343A40;
+    border: none;
     padding: 10px;
+    text-align: center;
   }
 
 #table{
     text-align: center;
+}
+
+.sort{
+  background-color: white;
+  font-weight: bold;
+  border: none;
+  color: black;
+}
+
+#table{
+  width: 80%;
+  margin: auto;
+  align-self: center;
+  background-color: white;
 }
