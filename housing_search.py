@@ -29,17 +29,27 @@ def get_sortedData(sort_type):
     df = pd.read_csv('dataframe/apartments.csv')
     if sort_type == '1':
         df = df.sort_values('price', ascending=True)
+        print('Ascending Price')
         return df
     elif sort_type == '2':
         df = df.sort_values('price', ascending=False)
+        print('Descending Price')
         return df
     elif sort_type == '3':
-        return df.sort_values('beds', ascending=True)
+        df = df.sort_values('beds', ascending=True)
+        print('Ascending Beds')
+        return df
     elif sort_type == '4':
-        return df.sort_values('beds', ascending=False)
+        df = df.sort_values('beds', ascending=False)
+        print('Descending Beds')
+        return df
     elif sort_type == '5':
-        return df.sort_values('bath', ascending=True)
+        df = df.sort_values('bath', ascending=True)
+        print('Ascending Baths')
+        return df
     else:
-        return df.sort_values('bath', ascending=False)
+        df = df.sort_values('bath', ascending=False)
+        print('Descending Baths')
+        return df
 
 # print(get_data('charles village').sort_values('price', ascending=False))
