@@ -57,7 +57,7 @@ def CLSearch(text):
             #price = ele.find_element(By.CLASS_NAME, "priceinfo").text
             name = beds + 'BR/' + bath + 'Ba unit at ' + address
         print(name, '|', link, '|', price)
-        results.append((name, link, price))
+        results.append((name, link, price, beds, bath))
         if i>1:
             break
         

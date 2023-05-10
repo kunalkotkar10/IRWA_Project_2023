@@ -11,7 +11,7 @@ import re
 def pagesearch(url):
     chrome_options = Options()
     chrome_options.add_argument('--headless')
-    driver = webdriver.Chrome(options = chrom)
+    driver = webdriver.Chrome(options = chrome_options)
 
     driver.get(url)
 
@@ -24,6 +24,7 @@ def pagesearch(url):
             address = "navigate to page for address"
         price = driver.find_element(By.CLASS_NAME, "price").text
         price = re.sub(r'[^\d.]', '', price)
+        price = int(price)
     except NoSuchElementException:
         address = "navigate to page for address"
 

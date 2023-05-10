@@ -6,6 +6,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import StaleElementReferenceException, NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 
+from aptsPageSearch import pagesearch
 
 def aptsSearch(text):
     # Set up the WebDriver
@@ -39,35 +40,32 @@ def aptsSearch(text):
     results = []
 
     for i,ele in enumerate(listings):
+
+        
         try:
             listing = ele.find_element(By.CLASS_NAME, "property-link")
-            name = listing.get_attribute("aria-label")
             link = listing.get_attribute("href")
-            try:
-                price = ele.find_element(By.CLASS_NAME, "property-pricing").text
-            except NoSuchElementException:
-                try:
-                    price = ele.find_element(By.CLASS_NAME, "property-rents").text
-                except:
-                    price = ele.find_element(By.CLASS_NAME, "price-range").text
-            #print(name, "|", link, "|", price)
+            #beds, bath, address, price = pagesearch(link)
+            #if beds is not None:
+            #    name = beds + 'BR/' + bath + 'Ba unit at ' + address
+            #else:
+            #    name = 'Unit at ' + address
         except StaleElementReferenceException:
             # Retry the element lookup in case of StaleElementReferenceException
             listing = ele.find_element(By.CLASS_NAME, "property-link")
-            name = listing.get_attribute("aria-label")
             link = listing.get_attribute("href")
-            try:
-                price = ele.find_element(By.CLASS_NAME, "property-pricing").text
-            except NoSuchElementException:
-                try:
-                    price = ele.find_element(By.CLASS_NAME, "property-rents").text
-                except:
-                    price = ele.find_element(By.CLASS_NAME, "price-range").text
-            #print(name, "|", link, "|", price)
-        results.append((name, link, price))
+            #beds, bath, address, price = pagesearch(link)
+            #if beds is not None:
+            #    name = beds + 'BR/' + bath + 'Ba unit at ' + address
+            #else:
+            #    name = 'Unit at ' + address
+        #results.append((name, link, price, beds, bath))
+        
+        results = results + pagesearch(link)
         if i>1:
             break
         
+    print(results)
     print("done - apartments.com")
 
 
