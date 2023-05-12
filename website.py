@@ -21,9 +21,9 @@ def sort():
     sort_type = request.form['value']
     print(sort_type)
     apts = get_sortedData(sort_type)
-    print(f'In Python: {apts}')
+    print(f'{apts}')
     return render_template('index.html', apts = apts)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8080)
     # app.run()

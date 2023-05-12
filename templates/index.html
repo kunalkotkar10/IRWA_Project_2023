@@ -32,9 +32,11 @@
             <th width="30%">Name</th>
             <th width="30%">Website Link</th>
             <th width="20%">
-              <button class="btn btn-secondary btn-sm dropdown-toggle sort" type="button" id="pricedownbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="sortPriceDown()">
-                Starting Price
-              </button>
+              <form action="/sort" method="POST" id="form">
+                <button class="btn btn-secondary btn-sm dropdown-toggle sort" type="button" id="pricedownbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="sortPriceDown()">
+                  Starting Price
+                </button>
+              </form>
               <div class="dropup">
               <button class="btn btn-secondary btn-sm dropdown-toggle sort" type="button" id="priceupbtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="sortPriceUp()" style="display:none;">
                 Starting Price
